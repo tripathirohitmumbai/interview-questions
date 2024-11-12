@@ -42,16 +42,16 @@ def is_valid_parenthesis(s):
     # YOUR CODE HERE
     mystack = []
     for c in s:
-        if c == ')' or c == '}' or c == ']' and len(mystack) == 0:
+        if c in (')','}',']') and len(mystack) == 0:
             return False
         elif c == '(' or c== '{' or c=='[':
-            stack.append(c)
-        elif c == ')' and stack[-1] == '(':
-            stack.pop()
-        elif c == '}' and stack[-1] == '{':
-            stack.pop()
-        elif c == ']' and stack[-1] == '[':
-            stack.pop()
+            mystack.append(c)
+        elif c == ')' and mystack[-1] == '(':
+            mystack.pop()
+        elif c == '}' and mystack[-1] == '{':
+            mystack.pop()
+        elif c == ']' and mystack[-1] == '[':
+            mystack.pop()
         else:
             return False
     if len(mystack) == 0:

@@ -14,8 +14,15 @@ def two_sum(nums, target):
     List[int]: Indices of the two numbers that add up to the target.
     """
     # YOUR CODE HERE
+    mydict = {}
+    for i,num in enumerate(nums):
+        diff = target - num
+        if diff in mydict:
+            return [i,mydict[diff]]
+        else:
+            mydict[num] = i
+    
     pass
-
 
 # Question 2
 def is_valid_parenthesis(s):
@@ -33,4 +40,23 @@ def is_valid_parenthesis(s):
     bool: True if the string is valid, False otherwise.
     """
     # YOUR CODE HERE
+    mystack = []
+    for c in s:
+        if c == ')' or c == '}' or c == ']' and len(mystack) == 0:
+            return False
+        elif c == '(' or c== '{' or c=='[':
+            stack.append(c)
+        elif c == ')' and stack[-1] == '(':
+            stack.pop()
+        elif c == '}' and stack[-1] == '{':
+            stack.pop()
+        elif c == ']' and stack[-1] == '[':
+            stack.pop()
+        else:
+            return False
+    if len(mystack) == 0:
+        return True
+    else:
+        return False
+        
     pass
